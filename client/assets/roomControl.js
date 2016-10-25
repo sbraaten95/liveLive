@@ -1,3 +1,3 @@
-app.controller('roomControl', ['$scope', '$location', 'userFactory', function ($scope, $location, uF){
-	
+app.controller('roomControl', ['$scope', '$location', 'userFactory', 'roomFactory', function ($scope, $location, uF, rF){
+
 }]);
