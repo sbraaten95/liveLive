@@ -6,8 +6,13 @@ app.factory('roomFactory', ['$http', function ($http){
 			console.log(data)
 		});
 	};
+	factory.getAll=(callback)=>{
+		$http.get('/rooms').then((data)=>{
+			callback(data.data);
+		})
+	}
 	factory.createRoom=(data, callback)=>{
-		$http.post('rooms', data).then((data) => {
+		$http.post('/rooms', data).then((data) => {
 			callback(data.data);
 		});
 	};

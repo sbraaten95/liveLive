@@ -12,7 +12,7 @@ app.controller('joinControl', ['$routeParams', '$scope', '$location', 'userFacto
 			password: $scope.password
 		}
 		rF.checkRoom(check, (room)=>{
-			$location.path(`room/${$routeParams.id}`);
+			$location.path(`room/${room._id}`);
 		});
 	};
 }]);
