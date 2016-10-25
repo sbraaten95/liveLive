@@ -16,7 +16,7 @@ app.config(($routeProvider)=>{
 	}).when('/create', {
 		controller: 'createControl',
 		templateUrl: 'partials/create.html'
-	}).when('/join', {
+	}).when('/join/:id', {
 		controller: 'joinControl',
 		templateUrl: 'partials/join.html'
 	}).when('/room', {
