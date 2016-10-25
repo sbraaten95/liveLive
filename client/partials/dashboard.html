@@ -1,7 +1,7 @@
 <div ng-controller="dashControl">
 	<h5><a href="#/">Home</a></h5>
 	<h1>Dashboard</h1>
-	<a href = '#/create'><button>Create Room</button></a>
+	<a href = '#/search'><button>Create Room</button></a>
 	<select ng-model="room">
 		<option ng-repeat="room in rooms" value="{{room._id}}">{{room.name}}</option>
 	</select>
