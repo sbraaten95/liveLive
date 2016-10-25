@@ -1,3 +1,7 @@
-<div ng-controller = 'createControl'>
-	<h5><a href="#/">Home</a></h5>
+<div ng-controller ='createControl'>
+	<form>
+		<label>Name of the room: </label><input type="text" placeholder="Name of Room" ng-model="room.name"><br>
+		<label>Password for the room: </label><input type="text" placeholder="Password" ng-model="room.password"><br>
+		<input type="submit" value="Create" ng-click=create()><br>
+	</form>	
 </div>
