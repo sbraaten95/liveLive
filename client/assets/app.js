@@ -19,7 +19,7 @@ app.config(($routeProvider)=>{
 	}).when('/search', {
 		controller: 'createControl',
 		templateUrl: 'partials/search.html'
-	}).when('/join', {
+	}).when('/join/:id', {
 		controller: 'joinControl',
 		templateUrl: 'partials/join.html'
 	}).when('/room/:id', {
