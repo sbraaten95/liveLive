@@ -3,6 +3,7 @@ app.controller('createControl', ['$scope', '$location', '$cookies', 'userFactory
 		$location.url('/create')
 	}
 	$scope.create=function(){
-		$location.url('/room')
+		
+		$location.url('room/' + id);
 	}
 }]);
