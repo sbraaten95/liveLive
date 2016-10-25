@@ -19,10 +19,10 @@ app.config(($routeProvider)=>{
 	}).when('/join/:id', {
 		controller: 'joinControl',
 		templateUrl: 'partials/join.html'
-	}).when('/room', {
+	}).when('/room/:id', {
 		controller: 'roomControl',
 		templateUrl: 'partials/room.html'
-	})otherwise({
+	}).otherwise({
 		redirectTo: '/'
 	});
 });
