@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
 
 var UserSchema = new mongoose.Schema({
 	alias: {type: String, required: true},
@@ -26,19 +25,6 @@ var UserSchema = new mongoose.Schema({
 			message: "Must be at least 8 characters, less than 33 characters, have 1 number, 1 uppercase character, and one special character."
 		}
 	}
-});
-
-UserSchema.methods.generateHash = function (password){
-	return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
-};
-
-UserSchema.methods.validPassword = function (password){
-	return bcrypt.compareSync(password, this.password);
-};
-
-UserSchema.pre('save', function (done) {
-	this.password = this.generateHash(this.password);
-	done();
 });
 
 var User = mongoose.model('User', UserSchema);

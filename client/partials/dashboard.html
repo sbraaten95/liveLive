@@ -1,4 +1,8 @@
 <div ng-controller="dashControl as dc">
 	<h5><a href="#/">Home</a></h5>
 	<h1>Dashboard</h1>
+	<ul>
+		<li ng-repeat="room in rooms">{{room}}</li>
+	</ul>
+	<button ng-click="join()">Join</button>
 </div>
