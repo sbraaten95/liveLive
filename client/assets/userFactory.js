@@ -9,6 +9,7 @@ app.factory('userFactory', ['$http', function ($http){
 	};	
 	factory.register=(inputData, callback)=>{
 		$http.post('/users', inputData).then((data)=>{
+			console.log(data)
 			if (data.data && data.data.errmsg) {
 				callback(data.data);
 			} else if (data.data && data.data.errors) {

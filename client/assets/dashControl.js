@@ -1,3 +1,3 @@
-app.controller('dashControl', ['$location', '$cookies', 'userFactory', function ($location, $cookies, uF){
-	var _this = this;
+app.controller('dashControl', ['$scope', '$location', '$cookies', 'userFactory', function ($location, $cookies, uF){
+	
 }]);

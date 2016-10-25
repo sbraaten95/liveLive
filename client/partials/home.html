@@ -1,9 +1,9 @@
-<div ng-controller="homeControl as hc">
+<div ng-controller="homeControl">
 	<h1>Demo</h1>
 	<h1>Login</h1>
-	<form ng-submit="hc.login()">
-		Email: <input type="text" ng-model="hc.reqUser.email">
-		Password: <input type="password" ng-model="hc.reqUser.password">
+	<form ng-submit="login()">
+		Email: <input type="text" ng-model="reqUser.email">
+		Password: <input type="password" ng-model="reqUser.password">
 		<input type="submit" value="Log In">
 	</form>
 	<p><a href="#/register">Sign Up</a></p>
