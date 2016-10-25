@@ -22,7 +22,7 @@ app.config(($routeProvider)=>{
 	}).when('/join', {
 		controller: 'joinControl',
 		templateUrl: 'partials/join.html'
-	}).when('/room', {
+	}).when('/room/:id', {
 		controller: 'roomControl',
 		templateUrl: 'partials/room.html'
 	}).otherwise({
