@@ -13,6 +13,9 @@ app.config(($routeProvider)=>{
 	}).when('/dashboard', {
 		controller: 'dashControl',
 		templateUrl: 'partials/dashboard.html'
+	}).when('/create', {
+		controller: 'createControl',
+		templateUrl: 'partials/create.html'
 	}).otherwise({
 		redirectTo: '/'
 	});
