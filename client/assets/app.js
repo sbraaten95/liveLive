@@ -16,10 +16,10 @@ app.config(($routeProvider)=>{
 	}).when('/create', {
 		controller: 'createControl',
 		templateUrl: 'partials/create.html'
-	}).when('/join/:id', {
+	}).when('/join', {
 		controller: 'joinControl',
 		templateUrl: 'partials/join.html'
-	}).when('/room/:id', {
+	}).when('/room', {
 		controller: 'roomControl',
 		templateUrl: 'partials/room.html'
 	}).otherwise({
