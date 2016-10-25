@@ -1,9 +1,10 @@
-app.controller('dashControl', ['$scope', '$location', '$cookies', 'userFactory', function ($scope, $location, $cookies, uF){
+app.controller('dashControl', ['$scope', '$location', '$cookies', 'userFactory', 'roomFactory', function ($scope, $location, $cookies, uF, rF){
 	$scope.getRooms=()=>{
-		rf.getAll((rooms)=>{
+		rF.getAll((rooms)=>{
 			$scope.rooms = rooms;
 		});
 	};
+	$scope.getRooms();
 	$scope.join=()=>{
 		$location.path(`join/${$scope.room}`);
 	};
