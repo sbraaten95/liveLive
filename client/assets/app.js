@@ -16,7 +16,13 @@ app.config(($routeProvider)=>{
 	}).when('/create', {
 		controller: 'createControl',
 		templateUrl: 'partials/create.html'
-	}).otherwise({
+	}).when('/join', {
+		controller: 'joinControl',
+		templateUrl: 'partials/join.html'
+	}).when('/room', {
+		controller: 'roomControl',
+		templateUrl: 'partials/room.html'
+	})otherwise({
 		redirectTo: '/'
 	});
 });
