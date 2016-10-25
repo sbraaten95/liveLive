@@ -1,0 +1,22 @@
+{
+  "name": "liveLive",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Scott Braaten <sbraaten95@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/sbraaten95/liveLive",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-cookies": "^1.5.8",
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8"
+  }
+}
