@@ -1,12 +1,20 @@
-<div ng-controller="regControl">
-	<h5><a href="#/">Home</a></h5>
-	<h1>Register</h1>
-	<form ng-submit="register()">
-		Alias: <input type="text" ng-model="newUser.alias">
-		Email: <input type="text" ng-model="newUser.email">
-		Password: <input type="password" ng-model="newUser.password">
-		Confirm Password: <input type="password" ng-model="newUser.checkpassword">
-		<input type="submit" value="Register">
-	</form>
+<div ng-controller="regControl" class="container">
+	<div class="row">
+		<h1>Register</h1><br>
+	</div>
+	<div class="row">
+		<form ng-submit="register()">
+			<div class="col-xs-4">
+				<div class="input input-group-lg">
+					<input type="text" class="form-control" ng-model="newUser.alias" placeholder="Username"><br>
+					<input type="text" class="form-control" ng-model="newUser.email" placeholder="Email"><br>
+					<input type="password" class="form-control" ng-model="newUser.password" placeholder="Password"><br>
+					<input type="password" class="form-control" ng-model="newUser.checkpassword" placeholder="Confirm Password"><br>
+					<input type="submit" class="btn btn-success" value="Register" id = "largebtn"><br><br>
+				</div>
+				<p class="center"><a href="#/">Back to Login</a></p>
+			</div>
+		</form>
+	</div>
 	<p ng-if="errors">{{errors}}</p>
 </div>
