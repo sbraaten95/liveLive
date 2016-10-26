@@ -3,11 +3,11 @@ app.factory('roomFactory', ['$http', function ($http){
 	var factory = {};
 	factory.getRoom=(id, callback)=>{
 		$http.get(`rooms/${id}`).then((data)=>{
+			callback(data.data)
 		});
 	};
 	factory.getAll=(callback)=>{
 		$http.get('/rooms').then((data)=>{
-			console.log(data);
 			callback(data.data);
 		})
 	}
