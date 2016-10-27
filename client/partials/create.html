@@ -1,22 +1,25 @@
-<div ng-controller ='createControl'>
-	<form>
-		<label>Name of the room: </label><input type="text" placeholder="Name of Room" ng-model="room.name"><br>
-		<label>Password for the room: </label><input type="text" placeholder="Password" ng-model="room.password"><br>
-		<input type="submit" value="Create" ng-click=create()><br>
-	</form>
-	<a href="/#/search"><button>Go back</button></a>
-	<table>
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Password</th>
-				<th>Video</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				
-			</tr>
-		</tbody>
-	</table>
+<div ng-controller ='createControl' class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			<h1>Create a Room</h1>
+			<form ng-submit="create()">
+				<div class="input input-group-md">
+					<label>Name of Room</label><input type="text" class="form-control" ng-model="room.name" placeholder="Name of Room"><br>
+					<label>Password</label><input type="text" class="form-control" placeholder="Password" ng-model="room.password"><br>
+					<label>Video ID</label><input type="text" class="form-control" ng-models="room.video" ng-init="room.video=video.id.videoId" value="{{video.id.videoId}}"><br>
+					<input type="submit" class="btn btn-success" value="Create Room" id = "largebtn"><br>
+				</div>
+			</form>
+			<button ng-click="returnSearch()">Choose a different video</button>
+		</div>
+		<div class="col-xs-2"></div>
+		<div class="col-xs-4">
+			<h2>Picked video:</h2>
+			<div ng-if="video.id.videoId">
+				<h4 class="videotitle">{{video.snippet.title}}</h4>
+				<img class="center" ng-src="https://img.youtube.com/vi/{{video.id.videoId}}/0.jpg"><br><br>
+				<p class="videotitle">Description: {{video.snippet.description}}</p><br>
+			</div>
+		</div>	
+	</div>
 </div>

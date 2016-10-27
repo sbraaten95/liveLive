@@ -21,7 +21,7 @@ app.factory('roomFactory', ['$http', function ($http){
 			callback(data.data);
 		});
 	};
-	factory.searchvid=function(data, callback){
+	factory.searchVid=function(data, callback){
 		var url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCaEWRwZALuph0aaaY27hugZlFneh9C9WE&part=snippet&q=";
 		$http.get(url+data).then(function(data, err){
 			if(err){
@@ -32,5 +32,17 @@ app.factory('roomFactory', ['$http', function ($http){
 			}
 		})
 	}
+	// factory.addVid=function(data, callback){
+	// 	console.log("factory", data)
+	// 	$http.post('/rooms/video', data).then(function(data, err){
+	// 		if(err){
+	// 			console.log(err)
+	// 		}
+	// 		else{
+	// 			// console.log("factory", data)
+	// 			callback(data)
+	// 		}
+	// 	})
+	// }
 	return factory;	
 }]);

@@ -40,5 +40,17 @@ module.exports={
 				res.json(rooms);
 			}
 		});
+	},
+	addVid: function(request, response){
+		console.log("backend", request.body.id.videoId)
+		Room.create(request.body.id.videoId, function(err, room){
+			if(err){
+				response.json(err);
+			}
+			else{
+				console.log("backend controller", room)
+				response.json(room);
+			}
+		})
 	}
 }
