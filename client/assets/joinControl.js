@@ -13,13 +13,17 @@ app.controller('joinControl', ['$routeParams', '$scope', '$location', 'userFacto
 			password: $scope.password
 		}
 		rF.checkRoom(check, (room)=>{
-			$location.path(`/room/${room._id}`);
+			if (typeof(room) == 'string') {
+				$scope.errors = room;
+			} else {
+				$location.path(`/room/${room._id}`);
+			}
 		});
 	};
 	$scope.join=(room)=>{
 		var check = {
 			roomId: room._id,
-			password: room.roompassword
+			password: room.password
 		}
 		console.log(check)
 		rF.checkRoom(check, (room)=>{

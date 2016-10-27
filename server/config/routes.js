@@ -10,6 +10,6 @@ module.exports=(app)=>{
 	app.get('/rooms', rooms.getAll);
 	// app.post('/rooms/video', rooms.addVid);
 	app.get('/rooms/:id', rooms.getOne);
-	app.post('/rooms', rooms.add);
 	app.post('/rooms/:id', rooms.check);
+	app.post('/rooms', rooms.add);
 };

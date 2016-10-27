@@ -2,17 +2,18 @@ app.factory('roomFactory', ['$http', function ($http){
 	var rooms = [];
 	var factory = {};
 	factory.getRoom=(id, callback)=>{
-		$http.get(`rooms/${id}`).then((data)=>{
+		$http.get(`/rooms/${id}`).then((data)=>{
 			callback(data.data)
 		});
 	};
 	factory.getAll=(callback)=>{
 		$http.get('/rooms').then((data)=>{
-			callback(data.data);
-		})
-	}
+			rooms = data.data;
+			callback(rooms);
+		});
+	};
 	factory.createRoom=(data, callback)=>{
-		$http.post('/rooms', data).then((data) => {
+		$http.post('/rooms', data).then((data)=>{
 			callback(data.data);
 		});
 	};
@@ -25,24 +26,12 @@ app.factory('roomFactory', ['$http', function ($http){
 		var url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCaEWRwZALuph0aaaY27hugZlFneh9C9WE&part=snippet&q=";
 		$http.get(url+data).then(function(data, err){
 			if(err){
-				console.log(err)
+				console.log(err);
 			}
 			else{
 				callback(data);
 			}
 		})
 	}
-	// factory.addVid=function(data, callback){
-	// 	console.log("factory", data)
-	// 	$http.post('/rooms/video', data).then(function(data, err){
-	// 		if(err){
-	// 			console.log(err)
-	// 		}
-	// 		else{
-	// 			// console.log("factory", data)
-	// 			callback(data)
-	// 		}
-	// 	})
-	// }
 	return factory;	
 }]);
