@@ -23,7 +23,7 @@ app.controller('joinControl', ['$routeParams', '$scope', '$location', 'userFacto
 	$scope.join=(room)=>{
 		var check = {
 			roomId: room._id,
-			password: room.roompassword
+			password: room.password
 		}
 		console.log(check)
 		rF.checkRoom(check, (room)=>{

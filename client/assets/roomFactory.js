@@ -8,9 +8,10 @@ app.factory('roomFactory', ['$http', function ($http){
 	};
 	factory.getAll=(callback)=>{
 		$http.get('/rooms').then((data)=>{
-			callback(data.data);
-		})
-	}
+			rooms = data.data;
+			callback(rooms);
+		});
+	};
 	factory.createRoom=(data, callback)=>{
 		$http.post('/rooms', data).then((data)=>{
 			callback(data.data);
@@ -25,12 +26,12 @@ app.factory('roomFactory', ['$http', function ($http){
 		var url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCaEWRwZALuph0aaaY27hugZlFneh9C9WE&part=snippet&q=";
 		$http.get(url+data).then(function(data, err){
 			if(err){
-				console.log(err)
+				console.log(err);
 			}
 			else{
 				callback(data);
 			}
-		})
-	}
+		});
+	};
 	return factory;	
 }]);
