@@ -69,6 +69,7 @@ app.directive('youtube', function($window) {
 				player.cueVideoById(scope.videoid);
 			});
 
+			
 
 		},
 	}
