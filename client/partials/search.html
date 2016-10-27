@@ -1,15 +1,15 @@
 <div ng-controller ='createControl' class="container">
-	<h1>Search Video</h1>
-	<input type="text" placeholder="Search Video" ng-model="video"><button ng-click= 'searchVideo()'>Search</button>
-	<input type="submit" value="Next"><br>
+	<h1>Create a Room</h1>
+	<h2>Search Video</h2>
+	<input type="text" placeholder="Search Video" ng-model="video"><button ng-click= 'searchVideo()'>Search</button><br>
 	<h5><a href="#/dashboard">Go back to Dashboard</a></h5>
 	<div class="row">
 		<h2 ng-if="videos.length>0">Choose a video</h2>
-		<div ng-repeat="videoItem in videos" class="col-xs-6" ng-if="videoItem.id.videoId">
+		<form ng-repeat="videoItem in videos track by $index" class="col-xs-6" ng-if="videoItem.id.videoId" ng-submit="selectVid(videos[$index])">
 			<h3 class="videotitle">{{videoItem.snippet.title}}</h3>
-			<img ng-src="https://img.youtube.com/vi/{{videoItem.id.videoId}}/0.jpg">
-			<p>{{videoItem.snippet.description}}</p>
-		</div>
-		
+			<img class="center" ng-src="https://img.youtube.com/vi/{{videoItem.id.videoId}}/0.jpg"><br><br>
+			<p class="videotitle">Description: {{videoItem.snippet.description}}</p><br>
+			<input type="submit" class="btn btn-success" value="Choose this video" id = "largebtn"><hr>
+		</form>	
 	</div>
 </div>
