@@ -24,7 +24,7 @@ module.exports={
 	check: function(req,res){
 		Room.findOne({_id: req.params.id}, (err, room)=>{
 			if (err) {
-				res.json(err);
+				console.log(err);
 			} else if (room.password == req.body.password) {
 				res.json(room);
 			} else {
