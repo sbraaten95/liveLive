@@ -5,4 +5,6 @@ app.controller('roomControl', ['$routeParams', '$scope', '$location', 'userFacto
 		});
 	};
 	getRoom();
+
+	$scope.temp = "fIuZdhFbLXk";
 }]);
