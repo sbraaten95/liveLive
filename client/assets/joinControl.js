@@ -1,4 +1,5 @@
 app.controller('joinControl', ['$routeParams', '$scope', '$location', 'userFactory', 'roomFactory', function ($routeParams, $scope, $location, uF, rF){
+	$scope.password=[];
 	$scope.getRoom=()=>{
 		rF.getRoom($routeParams.id, (room)=>{
 			$scope.room = room;
@@ -12,6 +13,17 @@ app.controller('joinControl', ['$routeParams', '$scope', '$location', 'userFacto
 			password: $scope.password
 		}
 		rF.checkRoom(check, (room)=>{
+			$location.path(`/room/${room._id}`);
+		});
+	};
+	$scope.join=(room)=>{
+		var check = {
+			roomId: room._id,
+			password: room.roompassword
+		}
+		console.log(check)
+		rF.checkRoom(check, (room)=>{
+			console.log(room)
 			$location.path(`/room/${room._id}`);
 		});
 	};

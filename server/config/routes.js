@@ -8,6 +8,6 @@ module.exports=(app)=>{
 	app.post('/users/:email', users.login);
 	app.get('/rooms', rooms.getAll);
 	app.get('/rooms/:id', rooms.getOne);
-	app.post('rooms/:id', rooms.check);
+	app.post('/rooms/:id', rooms.check)
 	app.post('/rooms', rooms.add);
 };

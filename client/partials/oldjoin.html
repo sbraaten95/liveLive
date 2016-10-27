@@ -1,0 +1,8 @@
+<div ng-controller="joinControl">
+	<h1>Join the room: "{{room.name}}"</h1>
+	<p>Input Password: </p>
+	<form ng-submit="submit()">
+		<input type="text" ng-model="password">
+		<input type="submit" value="Join">
+	</form>
+</div>

@@ -17,7 +17,7 @@ app.factory('roomFactory', ['$http', function ($http){
 		});
 	};
 	factory.checkRoom=(data, callback)=>{
-		$http.post(`rooms/${data.roomId}`, data.password).then((data)=>{
+		$http.post(`/rooms/${data.roomId}`, data).then((data)=>{
 			callback(data.data);
 		});
 	};

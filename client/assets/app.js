@@ -25,6 +25,9 @@ app.config(($routeProvider)=>{
 	}).when('/room/:id', {
 		controller: 'roomControl',
 		templateUrl: 'partials/room.html'
+	}).when('/join', {
+		controller: 'dashControl',
+		templateUrl: 'partials/join.html'
 	}).otherwise({
 		redirectTo: '/'
 	});

@@ -5,7 +5,4 @@ app.controller('dashControl', ['$scope', '$location', '$cookies', 'userFactory',
 		});
 	};
 	$scope.getRooms();
-	$scope.join=()=>{
-		$location.path(`join/${$scope.room}`);
-	};
 }]);
