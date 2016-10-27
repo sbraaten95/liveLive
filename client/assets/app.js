@@ -54,13 +54,22 @@ app.directive('youtube', function($window) {
 			var player;
 
 			$window.onYouTubeIframeAPIReady = function() {
-				console.log(scope.videoid)
 				player = new YT.Player(element.children()[0], {
 					height: scope.height,
 					width: scope.width,
 					videoId: scope.videoid
 				});
 			};
+
+			scope.$watch('videoid', function(newValue, oldValue) {
+				if (newValue == oldValue) {
+					return;
+				}
+
+				player.cueVideoById(scope.videoid);
+			});
+
+
 		},
 	}
 })
