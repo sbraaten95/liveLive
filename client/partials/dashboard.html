@@ -1,9 +1,12 @@
-<div ng-controller="dashControl">
-	<h5><a href="#/">Home</a></h5>
-	<h1>Dashboard</h1>
-	<a href = '#/search'><button>Create Room</button></a>
-	<select ng-model="room">
-		<option ng-repeat="room in rooms" value="{{room._id}}">{{room.name}}</option>
-	</select>
-	<button ng-click="join()">Join</button>
+<div ng-controller="dashControl" class="container">
+	<div class="row">
+		<h1>Dashboard</h1><br>
+	</div>
+	<div class="col-xs-4">
+		<a href="#/search"><button type="button"  class="btn btn-primary btn-lg" id = "largebtn">Create Room</button></a>
+	</div>
+	<div class="col-xs-4"><h3 class="center">OR</h3></div>
+	<div class="col-xs-4">
+		<a href="#/join"><button type="button"  class="btn btn-primary btn-lg" id = "largebtn">Join Private Room</button></a>	
+	</div>
 </div>

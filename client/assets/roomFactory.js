@@ -18,9 +18,19 @@ app.factory('roomFactory', ['$http', function ($http){
 	};
 	factory.checkRoom=(data, callback)=>{
 		$http.post(`/rooms/${data.roomId}`, data).then((data)=>{
-			console.log(data)
 			callback(data.data);
 		});
 	};
+	factory.searchvid=function(data, callback){
+		var url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCaEWRwZALuph0aaaY27hugZlFneh9C9WE&part=snippet&q=";
+		$http.get(url+data).then(function(data, err){
+			if(err){
+				console.log(err)
+			}
+			else{
+				callback(data);
+			}
+		})
+	}
 	return factory;	
 }]);

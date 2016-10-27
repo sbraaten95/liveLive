@@ -1,9 +1,29 @@
-<div ng-controller="joinControl">
-	<h1>Join the room: "{{room.name}}"</h1>
-	<p>Input Password: </p>
-	<form ng-submit="submit()">
-		<input type="text" ng-model="password">
-		<input type="submit" value="Join">
-	</form>
-	<p>{{errors}}</p>
+<div ng-controller="dashControl" class="container">
+	<div class="row">
+		<div class = "col-xs-12">
+			<h1>Join a Private Room</h1><br>
+		</div>
+	</div>
+	<div class="row">	
+		<div class="col-xs-10">
+			<input type="text" name="search" placeholder=" Filter" class="pull-right"><br><br>
+			<table class="table" ng-model="room">
+				<thead>
+					<tr>
+						<th>Room Name</th>
+						<th class="center">Action</th>
+						<th class="center">Created At</th>
+					</tr>
+				</thead>
+				<tbody ng-controller="joinControl">
+					<tr ng-repeat="room in rooms track by $index">
+						<td>{{room.name}}</td>
+						<td class="center"><input type="text" placeholder="Password" ng-model="room.roompassword"> <button ng-click="join(room)">Join</button></td>
+						<td class="center">{{room.createdAt}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<h5><a href="#/dashboard">Go back to Dashboard</a></h5>
+		</div>
+	</div>
 </div>
