@@ -2,9 +2,15 @@ app.factory('userFactory', ['$http', function ($http){
 	var users = [];
 	var factory = {};
 	factory.login=(inputUser, callback)=>{
-		$http.post(`/users/${inputUser.email}`).then((data)=>{
-			console.log(data);
-			callback(data);
+		$http.post(`/users/${inputUser.email}`, inputUser).then((data)=>{
+			if (data.data && data.data.errmsg) {
+				callback(data.data);
+			} else if (data.data && data.data.errors) {
+				callback(data.data);
+			} else {
+				user = data.data;
+				callback(user);
+			}
 		});
 	};	
 	factory.register=(inputData, callback)=>{

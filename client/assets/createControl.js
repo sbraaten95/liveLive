@@ -1,13 +1,13 @@
 app.controller('createControl', ['$scope', '$location', '$cookies', 'userFactory', 'roomFactory', '$cookies', '$route', function ($scope, $location, $cookies, uF, rF, $cookies, $route){
 	$scope.videos = [];
-	$scope.video = $cookies.video;
+	$scope.video = $cookies.get('video');
 	function getRoom(room){
-		$cookies.room = room;
+		$cookies.put('room', room);
 		console.log(room)
 		$location.url('/room/' + room._id);
 	};
 	function reloadPage(video){
-		$cookies.video= video.video;
+		$cookies.put('video', video.video);
 		console.log(video)
 		// $location.url('/room/' + $cookies.room);
 		$route.reload();
@@ -20,23 +20,24 @@ app.controller('createControl', ['$scope', '$location', '$cookies', 'userFactory
 	}
 	$scope.create=function(){
 		rF.createRoom($scope.room, getRoom);
-		$cookies.video ="";
+		$cookies.remove('video');
 	}
 	$scope.selectVid=function(video){
-		$cookies.video = video;
+		$cookies.put('video', video);
 		$location.url('/create');
-		console.log($cookies.video)
 	}
 	$scope.returnSearch=function(){
-		$cookies.video ="";
+		$cookies.remove('video');
 		$location.url('/search')
 	}
 	$scope.updateVid=function(video){
 		var data = {
 			video: video.id.videoId,
-			room: $cookies.room
+			room: $cookies.get('room')
 		};
 		rF.updateVid(data, reloadPage)
-
+	}
+	if(!$cookies.get('user')){
+		$location.url('/')
 	}
 }]);

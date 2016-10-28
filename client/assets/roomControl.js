@@ -1,4 +1,4 @@
-app.controller('roomControl', ['$routeParams', '$scope', '$location', 'userFactory', 'roomFactory', function ($routeParams, $scope, $location, uF, rF){
+app.controller('roomControl', ['$routeParams', '$scope', '$location', 'userFactory', 'roomFactory', '$cookies', function ($routeParams, $scope, $location, uF, rF, $cookies){
 	$scope.room={};
 	getRoom=()=>{
 		rF.getRoom($routeParams.id, (room)=>{
@@ -7,4 +7,7 @@ app.controller('roomControl', ['$routeParams', '$scope', '$location', 'userFacto
 		});
 	};
 	getRoom();
+	if(!$cookies.get('user')){
+		$location.url('/')
+	}
 }]);

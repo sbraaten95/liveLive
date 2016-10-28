@@ -16,10 +16,13 @@
 					</tr>
 				</thead>
 				<tbody ng-controller="joinControl">
+					<th class="center" ng-if="error"><h3>{{error}}<h3></th>
 					<tr ng-repeat="room in rooms track by $index">
 						<td>{{room.name}}</td>
-						<td class="center"><input type="text" placeholder="Password" ng-model="room.roompassword"> <button ng-click="join(room)">Join</button></td>
+						<td class="center"><input type="text" placeholder="Password" ng-model="room.roompassword">
+						<button ng-click="join(room)">Join</button></td>
 						<td class="center">{{room.createdAt}}</td>
+						<td class="center" ng-bind="room.error">{{room.error}}</td>
 					</tr>
 				</tbody>
 			</table>

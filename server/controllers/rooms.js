@@ -60,6 +60,7 @@ module.exports={
 				response.json(err)
 			}
 			else{
+				console.log(room)
 				room.video=request.body.video;
 				room.save(function(err, room){
 					if(err){

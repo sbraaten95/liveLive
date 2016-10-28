@@ -2,6 +2,7 @@
 	<div class="row">
 		<h1>Register</h1><br>
 	</div>
+	<h3 ng-repeat="error in errors">{{error}}</h3>
 	<div class="row">
 		<form ng-submit="register()">
 			<div class="col-xs-4">
@@ -16,5 +17,4 @@
 			</div>
 		</form>
 	</div>
-	<p ng-if="errors">{{errors}}</p>
 </div>
