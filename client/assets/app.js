@@ -56,9 +56,14 @@ app.directive('youtube', function($window) {
 			var firstScriptTag = document.getElementsByTagName('script')[0];
 			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+			console.log(firstScriptTag);
+
 			var player;
 
+			console.log(player)
+
 			$window.onYouTubeIframeAPIReady = function() {
+				console.log(element.children()[0])
 				player = new YT.Player(element.children()[0], {
 					height: scope.height,
 					width: scope.width,
