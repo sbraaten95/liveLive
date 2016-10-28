@@ -7,13 +7,11 @@ app.controller('createControl', ['$scope', '$location', '$cookies', 'userFactory
 		$location.url('/room/' + $scope.room._id);
 	};
 	function videoList(video){
-		// console.log(video);
 		$scope.videos = video.data.items;
 	}
 	$scope.searchVideo=function(){
 		console.log('addvideo')
 		rF.searchVid($scope.video, videoList);
-		// $location.url('/create')
 	}
 	$scope.create=function(){
 		rF.createRoom($scope.room, getRoom);
@@ -27,5 +25,8 @@ app.controller('createControl', ['$scope', '$location', '$cookies', 'userFactory
 	$scope.returnSearch=function(){
 		$cookies.video ="";
 		$location.url('/search')
+	}
+	$scope.updateVid=function(video){
+		$cookies.video = video;
 	}
 }]);

@@ -23,7 +23,7 @@ app.factory('roomFactory', ['$http', function ($http){
 		});
 	};
 	factory.searchVid=function(data, callback){
-		var url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCaEWRwZALuph0aaaY27hugZlFneh9C9WE&part=snippet&q=";
+		var url = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCaEWRwZALuph0aaaY27hugZlFneh9C9WE&videoEmbeddable=true&type=video&videoDuration=long&part=snippet&q=";
 		$http.get(url+data).then(function(data, err){
 			if(err){
 				console.log(err);
