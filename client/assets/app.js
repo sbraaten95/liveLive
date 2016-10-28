@@ -1,3 +1,7 @@
+/*
+Using cookies to check to see if a user is logged in. If the cookie is not set for the user with the user id, then we call a location function to redirect to the demo page.
+*/
+
 var app = angular.module('app', ['ngRoute', 'ngCookies']);
 
 app.config(($routeProvider)=>{
@@ -34,8 +38,9 @@ app.config(($routeProvider)=>{
 });
 
 app.directive('youtube', function($window) {
+	console.log('loading youtube directive')
 	return {
-		restrict: 'E',
+		restrict: 'AE',
 
 		scope: {
 			height: '@',
@@ -57,8 +62,17 @@ app.directive('youtube', function($window) {
 				player = new YT.Player(element.children()[0], {
 					height: scope.height,
 					width: scope.width,
-					videoId: scope.videoid
+					videoId: scope.videoid,
+					events: {
+						'onReady': onPlayerReady
+					}
 				});
+				console.log('Successfully loaded player, ', player);
+			};
+
+			$window.onPlayerReady = function(event) {
+				console.log('reached immediate play function, about to play.')
+				event.target.playVideo();
 			};
 
 			scope.$watch('videoid', function(newValue, oldValue) {
@@ -66,8 +80,11 @@ app.directive('youtube', function($window) {
 					return;
 				}
 
-				player.cueVideoById(scope.videoid);
+				if (player) {
+					player.cueVideoById(scope.videoid);
+				}
 			});
+
 
 
 		},

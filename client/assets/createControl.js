@@ -10,7 +10,6 @@ app.controller('createControl', ['$scope', '$location', '$cookies', 'userFactory
 		$scope.videos = video.data.items;
 	}
 	$scope.searchVideo=function(){
-		console.log('addvideo')
 		rF.searchVid($scope.video, videoList);
 	}
 	$scope.create=function(){
