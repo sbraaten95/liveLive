@@ -2,9 +2,8 @@ app.controller('roomControl', ['$routeParams', '$scope', '$location', 'userFacto
 	getRoom=()=>{
 		rF.getRoom($routeParams.id, (room)=>{
 			$scope.room = room;
+			console.log('loaded room')
 		});
 	};
 	getRoom();
-
-	$scope.temp = "fIuZdhFbLXk";
 }]);

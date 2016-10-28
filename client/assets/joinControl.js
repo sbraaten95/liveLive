@@ -7,19 +7,6 @@ app.controller('joinControl', ['$routeParams', '$scope', '$location', 'userFacto
 	};
 	$scope.getRoom();
 
-	$scope.submit=()=>{
-		var check = {
-			roomId: $scope.room._id,
-			password: $scope.password
-		}
-		rF.checkRoom(check, (room)=>{
-			if (typeof(room) == 'string') {
-				$scope.errors = room;
-			} else {
-				$location.path(`/room/${room._id}`);
-			}
-		});
-	};
 	$scope.join=(room)=>{
 		var check = {
 			roomId: room._id,

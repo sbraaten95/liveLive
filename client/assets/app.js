@@ -1,3 +1,7 @@
+/*
+Using cookies to check to see if a user is logged in. If the cookie is not set for the user with the user id, then we call a location function to redirect to the demo page.
+*/
+
 var app = angular.module('app', ['ngRoute', 'ngCookies']);
 
 app.config(($routeProvider)=>{
@@ -34,6 +38,7 @@ app.config(($routeProvider)=>{
 });
 
 app.directive('youtube', function($window) {
+	console.log('loading youtube directive')
 	return {
 		restrict: 'E',
 
@@ -66,10 +71,12 @@ app.directive('youtube', function($window) {
 					return;
 				}
 
-				player.cueVideoById(scope.videoid);
+				if (player) {
+					player.cueVideoById(scope.videoid);
+				}
 			});
 
-			
+
 
 		},
 	}
