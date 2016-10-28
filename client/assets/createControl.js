@@ -25,4 +25,7 @@ app.controller('createControl', ['$scope', '$location', '$cookies', 'userFactory
 		$cookies.video ="";
 		$location.url('/search')
 	}
+	$scope.updateVid=function(video){
+		$cookies.video = video;
+	}
 }]);
