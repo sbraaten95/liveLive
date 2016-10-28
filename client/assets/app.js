@@ -40,7 +40,7 @@ app.config(($routeProvider)=>{
 app.directive('youtube', function($window) {
 	console.log('loading youtube directive')
 	return {
-		restrict: 'E',
+		restrict: 'AE',
 
 		scope: {
 			height: '@',
@@ -62,8 +62,17 @@ app.directive('youtube', function($window) {
 				player = new YT.Player(element.children()[0], {
 					height: scope.height,
 					width: scope.width,
-					videoId: scope.videoid
+					videoId: scope.videoid,
+					events: {
+						'onReady': onPlayerReady
+					}
 				});
+				console.log('Successfully loaded player, ', player);
+			};
+
+			$window.onPlayerReady = function(event) {
+				console.log('reached immediate play function, about to play.')
+				event.target.playVideo();
 			};
 
 			scope.$watch('videoid', function(newValue, oldValue) {
