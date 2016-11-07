@@ -37,33 +37,34 @@ app.config(($routeProvider)=>{
 	});
 });
 
-app.directive('youtube', function($window) {
-	console.log('loading youtube directive')
+app.directive('youtube', ['$window', function($window) {
 	return {
-		restrict: 'AE',
+		restrict: 'E',
 
 		scope: {
-			height: '@',
-			width: '@',
-			videoid: '@'
+			height: '=',
+			width: '=',
+			videoid: '='
 		},
 
 		template: '<div></div>',
 
 		link: function(scope, element) {
+			var m = 0;
+			var firstScriptTag = document.getElementsByTagName('script')[m++];
+			while (firstScriptTag.src != "http://localhost:8000/angular/angular.js") {
+				firstScriptTag = document.getElementsByTagName('script')[m++]
+			}
+			// ^ A loop that will go until it has found youtube iframe api as the src for a script
 			var tag = document.createElement('script');
 			tag.src = "https://www.youtube.com/iframe_api";
-			var firstScriptTag = document.getElementsByTagName('script')[0];
-			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-			console.log(firstScriptTag);
+			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 			var player;
 
-			console.log(player)
-
 			$window.onYouTubeIframeAPIReady = function() {
-				console.log(element.children()[0])
+				// The below number needs to be changed to 1 after it is already called at zero.
 				player = new YT.Player(element.children()[0], {
 					height: scope.height,
 					width: scope.width,
@@ -72,11 +73,9 @@ app.directive('youtube', function($window) {
 						'onReady': onPlayerReady
 					}
 				});
-				console.log('Successfully loaded player, ', player);
 			};
 
 			$window.onPlayerReady = function(event) {
-				console.log('reached immediate play function, about to play.')
 				event.target.playVideo();
 			};
 
@@ -86,12 +85,10 @@ app.directive('youtube', function($window) {
 				}
 
 				if (player) {
-					player.cueVideoById(scope.videoid);
+					console.log(player);
+					player.cueVideoById();
 				}
 			});
-
-
-
-		},
+		}
 	}
-})
+}]);

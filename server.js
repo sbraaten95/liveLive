@@ -16,3 +16,8 @@ var server = app.listen(8000, ()=>{
 });
 
 var io = require('socket.io').listen(server);
+
+function setUpSockets() {
+	var rooms = [];
+	require('./server/controllers/rooms.js')
+}

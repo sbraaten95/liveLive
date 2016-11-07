@@ -1,4 +1,4 @@
-app.controller('roomControl', ['$routeParams', '$scope', '$location', 'userFactory', 'roomFactory', function ($routeParams, $scope, $location, uF, rF){
+app.controller('roomControl', ['$routeParams', '$window', '$scope', '$location', 'userFactory', 'roomFactory', function ($routeParams, $window, $scope, $location, uF, rF){
 	$scope.room={};
 	getRoom=()=>{
 		rF.getRoom($routeParams.id, (room)=>{

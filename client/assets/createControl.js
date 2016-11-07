@@ -3,7 +3,6 @@ app.controller('createControl', ['$scope', '$location', '$cookies', 'userFactory
 	$scope.video = $cookies.video;
 	function getRoom(room){
 		$scope.room = room;
-		console.log(room)
 		$location.url('/room/' + $scope.room._id);
 	};
 	function videoList(video){
