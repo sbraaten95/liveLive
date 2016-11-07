@@ -52,5 +52,25 @@ module.exports={
 				response.json(room);
 			}
 		})
-	}
+	}, 
+	update: function(request, response){
+		console.log(request.body)
+		Room.findOne({_id: request.body.room}, function(err, room){
+			if(err){
+				response.json(err)
+			}
+			else{
+				console.log(room)
+				room.video=request.body.video;
+				room.save(function(err, room){
+					if(err){
+						response.json(err);
+					}
+					else{		
+						response.json(room)
+					}
+				});
+			}
+		})
+	},
 }

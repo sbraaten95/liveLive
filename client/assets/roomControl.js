@@ -7,4 +7,7 @@ app.controller('roomControl', ['$routeParams', '$window', '$scope', '$location',
 		});
 	};
 	getRoom();
+	if(!$cookies.get('user')){
+		$location.url('/')
+	}
 }]);

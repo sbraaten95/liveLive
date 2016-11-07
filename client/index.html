@@ -20,7 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 <body ng-app="app">
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default" ng-controller="homeControl">
   		<div class="container-fluid">
     		<div class="navbar-header">
       			<a class="navbar-brand" href="#/dashboard">
@@ -35,7 +35,7 @@
       			<ul class="nav navbar-nav navbar-right">
 			        <li><a href="#">Link1</a></li>
 			        <li><a href="#">Link2</a></li>
-			        <li><a href="#">Link3</a></li>
+			        <li><a href="" ng-click="logout()">Logout</a></li>
       			</ul>
     		</div><!-- /.navbar-collapse -->
   		</div>

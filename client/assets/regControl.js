@@ -1,13 +1,26 @@
-app.controller('regControl', ['$scope', '$location', '$cookies', 'userFactory', function ($scope, $location, $cookies, uF){
+app.controller('regControl', ['$scope', '$location', '$cookies', 'userFactory', "$sce", function ($scope, $location, $cookies, uF, $sce){
+	$scope.errors=[];
 	$scope.register=()=>{
-		uF.register($scope.newUser, (user)=>{
-			if (user.errmsg || user.errors) {
-				console.log(user)
-				$scope.errors = user.errmsg ? user.errmsg : (user.errors ? user.errors : {});
-			} else {
-				$cookies.put('user', user._id);
-				$location.path('/dashboard');
-			}
-		});
+		$scope.errors = [];
+		if($scope.newUser.password == $scope.newUser.checkpassword){	
+			uF.register($scope.newUser, (user)=>{
+				if (user.errors) {
+					console.log(user)
+					if(user.errors.email){
+						$scope.errors.push(user.errors.email.message);
+					}
+					if(user.errors.password){
+						$scope.errors.push(user.errors.password.message);
+					}
+				} else {
+					$cookies.put('user', user._id);
+					$location.url('/dashboard');
+				}
+
+			});
+		}
+		else{
+			$scope.errors.push("Passwords must match")
+		}
 	};
 }]);

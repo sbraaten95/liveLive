@@ -1,5 +1,6 @@
-app.controller('joinControl', ['$routeParams', '$scope', '$location', 'userFactory', 'roomFactory', function ($routeParams, $scope, $location, uF, rF){
+app.controller('joinControl', ['$routeParams', '$scope', '$location', 'userFactory', 'roomFactory', '$cookies', function ($routeParams, $scope, $location, uF, rF, $cookies){
 	$scope.password=[];
+	$scope.joinerror="";
 	$scope.getRoom=()=>{
 		rF.getRoom($routeParams.id, (room)=>{
 			$scope.room = room;
@@ -8,14 +9,23 @@ app.controller('joinControl', ['$routeParams', '$scope', '$location', 'userFacto
 	$scope.getRoom();
 
 	$scope.join=(room)=>{
+		$cookies.put('room', room._id);
 		var check = {
 			roomId: room._id,
-			password: room.password
+			password: room.roompassword
 		}
-		console.log(check)
-		rF.checkRoom(check, (room)=>{
-			console.log(room)
-			$location.path(`/room/${room._id}`);
+		rF.checkRoom(check, (newroom)=>{
+			
+			if(newroom._id){
+				$location.path(`/room/${newroom._id}`);
+			}
+			else{
+				console.log("meeee", room)
+				$scope.error="Invalid Password";
+			}
 		});
 	};
+	if(!$cookies.get('user')){
+		$location.url('/')
+	}
 }]);

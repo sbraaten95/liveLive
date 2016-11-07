@@ -34,12 +34,12 @@ function UsersController (){
 		});
 	};
 	this.login=(req,res)=>{
-		console.log(req.params)
-		User.findOne({email: req.params.email}, (err, user)=>{
+		console.log(req.body)
+		User.findOne({email: req.body.email}, (err, user)=>{
 			if (err) {
 				res.json(err);
 			} else {
-				if (user) {
+				if (user && user.validPassword(req.body.password)) {
 					res.json(user);
 				} else {
 					res.json({error: `No account with the email: ${req.params.email}`});
