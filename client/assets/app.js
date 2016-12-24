@@ -50,45 +50,61 @@ app.directive('youtube', ['$window', function($window) {
 		template: '<div></div>',
 
 		link: function(scope, element) {
-			var m = 0;
-			var firstScriptTag = document.getElementsByTagName('script')[m++];
-			while (firstScriptTag.src != "http://localhost:8000/angular/angular.js") {
-				firstScriptTag = document.getElementsByTagName('script')[m++]
-			}
-			// ^ A loop that will go until it has found youtube iframe api as the src for a script
-			var tag = document.createElement('script');
-			tag.src = "https://www.youtube.com/iframe_api";
+			var storage = new Object() {
+				var m = 0;
+				var firstScriptTag = document.getElementsByTagName('script')[m++];
+				while (firstScriptTag.src != "http://localhost:8000/angular/angular.js") {
+					firstScriptTag = document.getElementsByTagName('script')[m++]
+				}
+				// ^ A loop that will go until it has found youtube iframe api as the src for a script
+				var tag = document.createElement('script');
+				tag.src = "https://www.youtube.com/iframe_api";
 
-			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+				firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-			var player;
+				var player;
+				var player1;
 
-			$window.onYouTubeIframeAPIReady = function() {
-				// The below number needs to be changed to 1 after it is already called at zero.
-				player = new YT.Player(element.children()[0], {
-					height: scope.height,
-					width: scope.width,
-					videoId: scope.videoid,
-					events: {
-						'onReady': onPlayerReady
+				$window.onYouTubeIframeAPIReady = function() {
+					// This function is only called once, even though there are two directivesh
+					console.log(player)
+					if (player) {
+						player1 = new YT.Player(element.children()[1], {
+							height: scope.height,
+							width: scope.width,
+							videoId: scope.videoid,
+							events: {
+								'onReady': onPlayerReady
+							}
+						});
+					} else {
+						player = new YT.Player(element.children()[0], {
+							height: scope.height,
+							width: scope.width,
+							videoId: scope.videoid,
+							events: {
+								'onReady': onPlayerReady
+							}
+						});
+					}
+					console.log(element)
+				};
+
+				$window.onPlayerReady = function(event) {
+					event.target.playVideo();
+				};
+
+				scope.$watch('videoid', function(newValue, oldValue) {
+					if (newValue == oldValue) {
+						return;
+					}
+
+					if (player) {
+						console.log(player);
+						player.cueVideoById();
 					}
 				});
-			};
-
-			$window.onPlayerReady = function(event) {
-				event.target.playVideo();
-			};
-
-			scope.$watch('videoid', function(newValue, oldValue) {
-				if (newValue == oldValue) {
-					return;
-				}
-
-				if (player) {
-					console.log(player);
-					player.cueVideoById();
-				}
-			});
+			}
 		}
 	}
 }]);

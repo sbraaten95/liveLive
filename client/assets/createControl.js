@@ -1,6 +1,6 @@
-app.controller('createControl', ['$scope', '$location', '$cookies', 'userFactory', 'roomFactory', '$cookies', '$route', function ($scope, $location, $cookies, uF, rF, $cookies, $route){
+app.controller('createControl', ['$scope', '$location', '$cookies', 'userFactory', 'roomFactory', '$route', function ($scope, $location, $cookies, uF, rF, $route){
 	$scope.videos = [];
-	$scope.video = $cookies.get('video');
+	$scope.video = $cookies.video;
 	function getRoom(room){
 		$scope.room = room;
 		$location.url('/room/' + $scope.room._id);
@@ -22,7 +22,9 @@ app.controller('createControl', ['$scope', '$location', '$cookies', 'userFactory
 		$cookies.remove('video');
 	}
 	$scope.selectVid=function(video){
-		$cookies.put('video', video);
+		console.log(video)
+		$cookies.video = video;
+		console.log($cookies.video)
 		$location.url('/create');
 	}
 	$scope.returnSearch=function(){
